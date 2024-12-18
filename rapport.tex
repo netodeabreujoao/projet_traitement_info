@@ -29,23 +29,144 @@
 \section{Introduction}
 Ce rapport concerne le traitement de données publiques issues d'un site de base données pour appliquer au machine learning \footnote{\url{https://archive.ics.uci.edu/}}. Pour analyser ces données, qui sont de types ratio, nous avons choisi d'utiliser deux méthodes :\\
 \begin{enumerate}
-\item On appliquera d'abord un ACP afin de réduire le nombre d'attribus pour ensuite appliquer l'algorithme des K-moyennes pour trouver les 3 cépages differents\\
-\item On applique directement l'algorithme des K-moyennes
+\item On appliquera d'abord un ACP afin de réduire le nombre de caractéristiques pour ensuite appliquer l'algorithme des K-moyennes pour trouver les 3 cépages differents.\\
+\item On applique directement l'algorithme des K-moyennes.
 \end{enumerate}
 \vspace{1cm}
-Dans la section \ref{sec:presentation1}, nous présentons la base de données utilisée.Nous décrivons alors la méthode d'analyse de donnée considérée en section \ref{sec:presentation2}.Puis, on analysera les résultats obtenues dans la séction \ref{sec:analyse}. Une conclusion sur le travail réalisé est enfin proposée en séction \ref{sec:conclusion}
+Dans la section \ref{sec:presentation1}, nous présentons la base de données utilisée.Nous décrivons alors la méthode d'analyse de donnée considérée en section \ref{sec:presentation2}.Puis, on analysera les résultats obtenues dans la séction \ref{sec:analyse}. Une conclusion sur le travail réalisé est enfin proposée en séction \ref{sec:conclusion}.
 
 \section{Présentation des données}
 \label{sec:presentation1}
 Cette base de données résulte d'une étude chimique des vins produit dans la même région italienne. Cette base de données rassemble des données concernant des vins issus de trois variétés distinctes. Les informations ont été collectées afin d'analyser la composition chimique et de fournir un cadre pour des analyses statistiques, en particulier en apprentissage automatique. Les informations sont issues de l'étude de 13 composés chimiques présents dans chaque type de vin.
 
+\newpage
+
 \section{Présentation de la méthode}
 \label{sec:presentation2}
-tkt
+\subsection{Analyse en Composantes Principales (ACP)}
+
+La méthode d'analyse statistique appelée Analyse en Composantes Principales (ACP) vise à diminuer la dimensionnalité d'un jeu de données tout en préservant un maximum d'informations. Grâce à elle, il est possible de convertir des variables corrélées en un ensemble de variables non corrélées appelées composantes principales.\\
+
+\subsubsection{Objectif}
+
+L'ACP vise à diminuer la quantité de caractéristiques (ou de dimensions) tout en préservant l'information la plus pertinente. L'amélioration des performances des algorithmes de traitement est facilitée par cette réduction. \\
+
+\subsubsection{Principe fonctionnement}
+
+On a une matrice X $ \in \mathbb{R}^{n\times p}$ qui contient les données quantitative. On note x$_i$ la i$^{\text{ième}}$ ligne et x$^j$ la j$^{\text{ième}}$ colonne.\\
+
+\begin{equation}
+  \text{On calcule, } \forall j \in \llbracket 0, p \rrbracket, \quad \mu_j = \frac{1}{n} \sum_{i=1}^nx_i^j
+\end{equation}
+\begin{equation}
+  \text{Puis, } \forall j \in \llbracket 0, p \rrbracket, \quad \sigma_j^2 = \frac{1}{n} \sum_{i =1}^n (s_i^j - \mu_j )^2
+\end{equation}
+\begin{equation}
+  \text{Enfin, on standardise les données : } \forall (i, j) \in \llbracket 0, n \rrbracket \times \llbracket 0, p \rrbracket, \quad \tilde{x}_i^j = \frac{ x_i^j - \mu^j}{\sigma_j}
+\end{equation}
+\vspace{10pt}
+Après avoir standardiser les données \~X, on calcule la matrice de correlation:
+\begin{equation}
+  C = \frac{1}{n}\tilde{X}^T\tilde{X}
+\end{equation}
+
+Après avoir calculer C, on trouve les valeurs propres et les vecteurs propres associés pour ensuite regarder les valeurs propres et garder celles qu'on souhaite avec les deux méthodes possibles : soit la méthode du coude, c'est-à-dire une grande diminution d'une valeur propre à la suivant, soit en gardant 95 \% de la variance.
+
+
+\subsection{K-Moyennes}
+L'algorithme de classification non supervisée K-moyenne est une technique de clustering qui permet de regrouper des données en un nombre prédéfini de groupes (clusters).
+
+\subsubsection{Objectif}
+Composer des groupes homogènes d'observations similaires.\\
+
+Chaque point est attribué au cluster le plus proche dont le centre (centroïde).
+
+\subsubsection{Principe de fonctionnement}
+
+\begin{algorithm}
+  \caption{Pseudo-code de K-Moyenne}
+  K\_MOYENNES(Z,k):\\
+  \KwData{Z = ensemble de points, k = un entier}
+  \KwResult{Une liste contenant les k cluster avec leur point}
+  B = Tableau de k listes  \\
+  B' = Copie de B\\
+  m$_1$, $\cdots$, m$_k$ = Tirage au hasard dans Z\\
+  \ForAll{x $\in$ Z}{
+    j$_{min}$ = j tel que dist(x,m$_j$) est minimale \\
+    Ajout de x à B[j$_{min}$] \\
+  }
+  \While{ B $\neq$ B'}{
+    B' = copie de B\\
+    \For{j=1 à k:}{
+      m$_j$ = moyenne des éléments de B[j]
+    }
+    B = Tableau de k listes vides\\
+    \ForAll{x $\in$ Z}{
+      j$_{min}$ = j tel que dist(x,m$_j$) est minimale \\
+      Ajout de x à B[j$_{min}$] \\
+    }
+  }
+  \Return B
+\end{algorithm}
+
+\newpage
 
 \section{Analyse des résultats obtenues}
 \label{sec:analyse}
-tkt
+
+\subsection{Analyse de Composantes Principales + K-Moyennes}
+
+Lorsqu'on trie le tableau contenant les valeurs propres de la matrice de correlation, on obtient le graphe suivant: \\
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=1\textwidth]{vp.png} % Chemin de l'image
+   \caption{Valeurs propres trièes dans l'ordre décroissante}
+   \label{fig:vp} % Label pour faire référence à l'image
+\end{figure}  
+             
+Come on n'a pas de grande diminution d'une valeur propre à la suivante, on va donc prendre l'autre méthode pour savoir le nombre caractéristiques à garder. Après calcul on obtient 8 caractéristiques au lieu de 13.\\
+
+On obtient alors que d'après l'ACP la teinte, le proline, Od280/OD315 des vins dilués, l'intensité de la couleur et les phénols non flavanoïdes n'ont pas beaucoup d'impacts par rapport aux caractéristiques.\\
+
+Dans le module KMeans, il y a deux algorithmes disponibles pour calculer les cluster de nos données.
+
+\subsubsection{Algorithme Lloyd}
+Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
+
+\newpage
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=0.8\textwidth]{lloyd.png} % Chemin de l'image
+   \caption{Classes des données avec l'algorithme de Lloyd}
+   \label{fig:lloyd} % Label pour faire référence à l'image
+\end{figure}
+
+Lorsqu'on regarde le taux de succès global, on a 49.44 \% et par classe on a : \\
+\begin{itemize}
+\item Classe 1 : 62.71 \%
+\item Classe 2 : 64.79 \%
+\item Classe 3 : 10.42 \%
+\end{itemize}
+
+
+\subsubsection{Algorithme Elkan}
+Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=0.8\textwidth]{elkan.png} % Chemin de l'image
+   \caption{Classes des données avec l'algorithme d'Elkan}
+   \label{fig:lloyd} % Label pour faire référence à l'image
+\end{figure}
+
+Lorsqu'on regarde le taux de succès global, on a 49.44 \% et par classe on a : \\
+\begin{itemize}
+\item Classe 1 : 62.71 \%
+\item Classe 2 : 64.79 \%
+\item Classe 3 : 10.42 \%
+\end{itemize}
 
 \section{Conclusion}
 \label{sec:conclusion}
