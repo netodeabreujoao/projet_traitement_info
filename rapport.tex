@@ -97,7 +97,7 @@ Chaque point est attribué au cluster le plus proche dont le centre (centroïde)
   }
   \While{ B $\neq$ B'}{
     B' = copie de B\\
-    \For{j=1 à k:}{
+    \For{j=1 to k:}{
       m$_j$ = moyenne des éléments de B[j]
     }
     B = Tableau de k listes vides\\
@@ -127,11 +127,10 @@ Lorsqu'on trie le tableau contenant les valeurs propres de la matrice de correla
              
 Come on n'a pas de grande diminution d'une valeur propre à la suivante, on va donc prendre l'autre méthode pour savoir le nombre caractéristiques à garder. Après calcul on obtient 8 caractéristiques au lieu de 13.\\
 
-On obtient alors que d'après l'ACP la teinte, le proline, Od280/OD315 des vins dilués, l'intensité de la couleur et les phénols non flavanoïdes n'ont pas beaucoup d'impacts par rapport aux caractéristiques.\\
-
 Dans le module KMeans, il y a deux algorithmes disponibles pour calculer les cluster de nos données.
 
 \subsubsection{Algorithme Lloyd}
+
 Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
 
 \newpage
@@ -143,7 +142,9 @@ Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
    \label{fig:lloyd} % Label pour faire référence à l'image
 \end{figure}
 
-Lorsqu'on regarde le taux de succès global, on a 49.44 \% et par classe on a : \\
+Lorsqu'on regarde le taux de succès global, on a 49.44 \%.\\
+
+On a par classe on a :
 \begin{itemize}
 \item Classe 1 : 62.71 \%
 \item Classe 2 : 64.79 \%
@@ -158,19 +159,28 @@ Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
    \centering
    \includegraphics[width=0.8\textwidth]{elkan.png} % Chemin de l'image
    \caption{Classes des données avec l'algorithme d'Elkan}
-   \label{fig:lloyd} % Label pour faire référence à l'image
+   \label{fig:elkan} % Label pour faire référence à l'image
 \end{figure}
 
-Lorsqu'on regarde le taux de succès global, on a 49.44 \% et par classe on a : \\
+Lorsqu'on regarde le taux de succès global, on a 49.44 \%.\\
+
+On a par classe on a :
 \begin{itemize}
 \item Classe 1 : 62.71 \%
 \item Classe 2 : 64.79 \%
 \item Classe 3 : 10.42 \%
 \end{itemize}
 
+\newpage
+
 \section{Conclusion}
 \label{sec:conclusion}
-tkt
+
+Comme nous le monre la figure \ref{fig:vp}, on observe, que d'après l'ACP,  la teinte, le proline, Od280/OD315 des vins dilués, l'intensité de la couleur et les phénols non flavanoïdes n'ont pas beaucoup d'impacts par rapport aux caractéristiques.\\
+
+On peut aussi en conclure que lorsqu'on applique l'ACP le taux de succès des deux algorithmes n'est pas très élevé 49,44 \% pour \ref{fig:lloyd} et \ref{fig:elkan}.\\
+
+On a essayé aussi de changer le tirage aléatoire avec des valeurs de début, et même de cette manière on obtient le même pourcentage de succès.
 
 \section*{Références}
 \label{sec:référence}
