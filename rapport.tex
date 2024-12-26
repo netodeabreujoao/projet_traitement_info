@@ -33,13 +33,13 @@ Ce rapport concerne le traitement de données publiques issues d'un site de base
 \item On applique directement l'algorithme des K-moyennes.
 \end{enumerate}
 \vspace{1cm}
-Dans la section \ref{sec:presentation1}, nous présentons la base de données utilisée.Nous décrivons alors la méthode d'analyse de donnée considérée en section \ref{sec:presentation2}.Puis, on analysera les résultats obtenues dans la séction \ref{sec:analyse}. Une conclusion sur le travail réalisé est enfin proposée en séction \ref{sec:conclusion}.
+Dans la section \ref{sec:presentation1}, nous présentons la base de données utilisée.Nous décrivons alors la méthode d'analyse de données considérée en section \ref{sec:presentation2}. Puis, on analysera les résultats obtenues dans la section \ref{sec:analyse}. Une conclusion sur le travail réalisé est enfin proposée en section \ref{sec:conclusion}.
 
 \section{Présentation des données}
 \label{sec:presentation1}
 Cette base de données résulte d'une étude chimique des vins produit dans la même région italienne. Cette base de données rassemble des données concernant des vins issus de trois variétés distinctes. Les informations ont été collectées afin d'analyser la composition chimique et de fournir un cadre pour des analyses statistiques, en particulier en apprentissage automatique. Les informations sont issues de l'étude de 13 composés chimiques présents dans chaque type de vin.
 
-\newpage
+%\newpage
 
 \section{Présentation de la méthode}
 \label{sec:presentation2}
@@ -70,7 +70,7 @@ Après avoir standardiser les données \~X, on calcule la matrice de correlation
   C = \frac{1}{n}\tilde{X}^T\tilde{X}
 \end{equation}
 
-Après avoir calculer C, on trouve les valeurs propres et les vecteurs propres associés pour ensuite regarder les valeurs propres et garder celles qu'on souhaite avec les deux méthodes possibles : soit la méthode du coude, c'est-à-dire une grande diminution d'une valeur propre à la suivant, soit en gardant 95 \% de la variance.
+Après avoir calculé C, on trouve les valeurs propres et les vecteurs propres associés pour ensuite regarder les valeurs propres et garder celles qu'on souhaite avec les deux méthodes possibles : soit la méthode du coude, c'est-à-dire une grande diminution d'une valeur propre à la suivante, soit en gardant 95 \% de la variance.
 
 
 \subsection{K-Moyennes}
@@ -118,6 +118,8 @@ Chaque point est attribué au cluster le plus proche dont le centre (centroïde)
 
 Lorsqu'on trie le tableau contenant les valeurs propres de la matrice de correlation, on obtient le graphe suivant: \\
 
+\newpage
+
 \begin{figure}[h!] % Placement de l'image
    \centering
    \includegraphics[width=1\textwidth]{vp.png} % Chemin de l'image
@@ -125,7 +127,7 @@ Lorsqu'on trie le tableau contenant les valeurs propres de la matrice de correla
    \label{fig:vp} % Label pour faire référence à l'image
 \end{figure}  
              
-Come on n'a pas de grande diminution d'une valeur propre à la suivante, on va donc prendre l'autre méthode pour savoir le nombre caractéristiques à garder. Après calcul on obtient 8 caractéristiques au lieu de 13.\\
+Comme on n'a pas de grande diminution d'une valeur propre à la suivante, on va donc prendre l'autre méthode pour savoir le nombre caractéristiques à garder. Après calcul on obtient 8 caractéristiques au lieu de 13.\\
 
 Dans le module KMeans, il y a deux algorithmes disponibles pour calculer les cluster de nos données.
 
@@ -155,6 +157,8 @@ On a par classe on a :
 \subsubsection{Algorithme Elkan}
 Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
 
+\newpage
+
 \begin{figure}[h!] % Placement de l'image
    \centering
    \includegraphics[width=0.8\textwidth]{elkan.png} % Chemin de l'image
@@ -173,25 +177,25 @@ On a par classe on a :
 
 \subsection{K-Moyennes seule}
 \subsubsection{Utilisation de toutes les données}
-en utilisant toutes les donnes fournies par le tableau on applique dirrectement les K-Moyennes avec les algorithmes elkan et lloyd.
+En utilisant toutes les données fournies par le tableau on applique dirrectement les K-Moyennes avec les algorithmes Elkan et Lloyd.
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=1\textwidth]{comparaison_algos.png} % Chemin de l'image
+   \includegraphics[width=0.8\textwidth]{comparaison_algos.png} % Chemin de l'image
    \caption{Resultats obtenues par les algorithmes lloyd et elkan}
    \label{comparaison_algos.png} % Label pour faire référence à l'image
 \end{figure}
 
-on remarque que les deux algorithmes donnent le meme resulta. Pour la suite du projet on utilisera donc l'algorithme de lloyd.
-\newpage
-\subsubsection{utilisation donnes specifiques}
+On remarque que les deux algorithmes donnent le même résultat. Pour la suite du projet on utilisera donc l'algorithme de lloyd.
+
+\subsubsection{Utilisation donnes specifiques}
 
 Lorsqu'on applique KMeans avec des attributs choisis par une personne lambda on obtient :
 
 \begin{figure}[h!] % Placement de l'image
    \centering
    \includegraphics[width=0.8\textwidth]{normal_atributes.png} % Chemin de l'image
-   \caption{Classes des données avec attributs choisis par personne lamnda}
+   \caption{Classes des données avec attributs choisis par personne lambda}
 \end{figure}
 \newpage
 
@@ -203,7 +207,8 @@ On a par groupe on a :
 \item Wine-group 2 : 55.55 \%
 \item Wine-group 3 : 58.33 \%
 \end{itemize}
-\newpage
+
+\vspace{10pt}
 
 Lorsqu'on applique KMeans avec des attributs choisis par un connaiseur on obtient :
 
@@ -228,22 +233,18 @@ On a par groupe on a :
    \caption{Comparaison de reussite selon les attributs choisis}
 \end{figure}
 
-L'on remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs.
-on comprends donc que choisir trops d'atributs n'est pas toujours la meilleure solution. mais en choisissant
- moins d'attributs au hasard ce n'est pas mieux. il faut donc choisir judicieusement les donnes que l'on veut traiter.
-  De plus on remarque que les professionnels s'y connaisent tres bien du fait que leur taux de reussite est au de la de 80\%
-\newpage
-
 \section{Conclusion}
 \label{sec:conclusion}
 
-Comme nous le monre la figure \ref{fig:vp}, on observe, que d'après l'ACP,  la teinte, le proline, Od280/OD315 des vins dilués, l'intensité de la couleur et les phénols non flavanoïdes n'ont pas beaucoup d'impacts par rapport aux caractéristiques.\\
+Comme nous le montre la figure \ref{fig:vp}, on observe, que d'après l'ACP,  la teinte, la proline, Od280/OD315 des vins dilués, l'intensité de la couleur et les phénols non flavanoïdes n'ont pas beaucoup d'impacts par rapport aux caractéristiques.\\
 
-On peut aussi en conclure que lorsqu'on applique l'ACP le taux de succès des deux algorithmes n'est pas très élevé 49,44 \% pour \ref{fig:lloyd} et \ref{fig:elkan}.\\
+On peut aussi en conclure que lorsqu'on applique l'ACP le taux de succès des deux algorithmes n'est pas très élevé : 49,44 \% pour \ref{fig:lloyd} et \ref{fig:elkan}.\\
 
-On a essayé aussi de changer le tirage aléatoire avec des valeurs de début, et même de cette manière on obtient le même pourcentage de succès.
+On a essayé aussi de changer le tirage aléatoire avec des valeurs de début, et même de cette manière on obtient le même pourcentage de succès.\\
 
-\section*{Références}
-\label{sec:référence}
+On remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs. On comprends donc que choisir trop d'atributs n'est pas toujours la meilleure solution, mais en choisissant moins d'attributs au hasard ce n'est pas mieux.\\
 
+Il faut donc choisir judicieusement les données que l'on veut traiter.\\
+
+De plus on remarque que les professionnels s'y connaissent très bien du fait que leur taux de réussite est au-delà de 80\%. 
 \end{document}
