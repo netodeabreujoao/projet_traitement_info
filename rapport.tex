@@ -171,6 +171,67 @@ On a par classe on a :
 \item Classe 3 : 10.42 \%
 \end{itemize}
 
+\subsection{K-Moyennes seule}
+\subsubsection{Utilisation de toutes les données}
+en utilisant toutes les donnes fournies par le tableau on applique dirrectement les K-Moyennes avec les algorithmes elkan et lloyd.
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=1\textwidth]{comparaison_algos.png} % Chemin de l'image
+   \caption{Resultats obtenues par les algorithmes lloyd et elkan}
+   \label{comparaison_algos.png} % Label pour faire référence à l'image
+\end{figure}
+
+on remarque que les deux algorithmes donnent le meme resulta. Pour la suite du projet on utilisera donc l'algorithme de lloyd.
+\newpage
+\subsubsection{utilisation donnes specifiques}
+
+Lorsqu'on applique KMeans avec des attributs choisis par une personne lambda on obtient :
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=0.8\textwidth]{normal_atributes.png} % Chemin de l'image
+   \caption{Classes des données avec attributs choisis par personne lamnda}
+\end{figure}
+\newpage
+
+Lorsqu'on regarde le taux de succès global, on a 67.84 \%.\\
+
+On a par groupe on a :
+\begin{itemize}
+\item Wine-group 1 : 89.65 \%
+\item Wine-group 2 : 55.55 \%
+\item Wine-group 3 : 58.33 \%
+\end{itemize}
+\newpage
+
+Lorsqu'on applique KMeans avec des attributs choisis par un connaiseur on obtient :
+
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=0.8\textwidth]{profetional_atributes.png} % Chemin de l'image
+   \caption{Classes des données avec attributs choisis par un connaisseur}
+\end{figure}
+
+Lorsqu'on regarde le taux de succès global, on a 83.13 \%.\\
+
+On a par groupe on a :
+\begin{itemize}
+\item Wine-group 1 : 86.20 \%
+\item Wine-group 2 : 77.77 \%
+\item Wine-group 3 : 85.41 \%
+\end{itemize}
+\newpage
+\begin{figure}[h!] % Placement de l'image
+   \centering
+   \includegraphics[width=0.8\textwidth]{differents_attributes.png} % Chemin de l'image
+   \caption{Comparaison de reussite selon les attributs choisis}
+\end{figure}
+
+L'on remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs.
+on comprends donc que choisir trops d'atributs n'est pas toujours la meilleure solution. mais en choisissant
+ moins d'attributs au hasard ce n'est pas mieux. il faut donc choisir judicieusement les donnes que l'on veut traiter.
+  De plus on remarque que les professionnels s'y connaisent tres bien du fait que leur taux de reussite est au de la de 80\%
 \newpage
 
 \section{Conclusion}
