@@ -83,7 +83,8 @@ Chaque point est attribué au cluster le plus proche dont le centre (centroïde)
 
 \subsubsection{Principe de fonctionnement}
 
-\begin{algorithm}
+\begin{algorithm}[h!]
+  \small
   \caption{Pseudo-code de K-Moyenne}
   K\_MOYENNES(Z,k):\\
   \KwData{Z = ensemble de points, k = un entier}
@@ -118,11 +119,9 @@ Chaque point est attribué au cluster le plus proche dont le centre (centroïde)
 
 Lorsqu'on trie le tableau contenant les valeurs propres de la matrice de correlation, on obtient le graphe suivant: \\
 
-\newpage
-
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=1\textwidth]{vp.png} % Chemin de l'image
+   \includegraphics[width=0.8\textwidth]{vp.png} % Chemin de l'image
    \caption{Valeurs propres trièes dans l'ordre décroissante}
    \label{fig:vp} % Label pour faire référence à l'image
 \end{figure}  
@@ -131,53 +130,38 @@ Comme on n'a pas de grande diminution d'une valeur propre à la suivante, on va 
 
 Dans le module KMeans, il y a deux algorithmes disponibles pour calculer les cluster de nos données.
 
-\subsubsection{Algorithme Lloyd}
-
-Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
-
-\newpage
-
 \begin{figure}[h!] % Placement de l'image
-   \centering
-   \includegraphics[width=0.6\textwidth]{lloyd.png} % Chemin de l'image
-   \caption{Classes des données avec l'algorithme de Lloyd}
-   \label{fig:lloyd} % Label pour faire référence à l'image
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{lloyd.png} % Chemin de l'image
+    \caption{Classes des données avec l'algorithme de Lloyd}
+    \label{fig:lloyd} % Label pour faire référence à l'image
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{elkan.png} % Chemin de l'image
+    \caption{Classes des données avec l'algorithme d'Elkan}
+    \label{fig:elkan} % Label pour faire référence à l'image
+  \end{subfigure}
+  \label{fig:deux_images}
 \end{figure}
 
-Lorsqu'on regarde le taux de succès global, on a 49.44 \%.\\
-
-On a par classe on a :
-\begin{itemize}
-\item Classe 1 : 62.71 \%
-\item Classe 2 : 64.79 \%
-\item Classe 3 : 10.42 \%
-\end{itemize}
-
-
-\subsubsection{Algorithme Elkan}
-Lorsqu'on applique KMeans avec l'algorithme de Elkan, on obtient :
-
-
-
-\begin{figure}[h!] % Placement de l'image
-   \centering
-   \includegraphics[width=0.6\textwidth]{elkan.png} % Chemin de l'image
-   \caption{Classes des données avec l'algorithme d'Elkan}
-   \label{fig:elkan} % Label pour faire référence à l'image
-\end{figure}
-
-Lorsqu'on regarde le taux de succès global, on a 49.44 \%.\\
-
-On a par classe on a :
-\begin{itemize}
-\item Classe 1 : 62.71 \%
-\item Classe 2 : 64.79 \%
-\item Classe 3 : 10.42 \%
-\end{itemize}
+Voici les taux de succès de chaque algorithme: \\
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| c | c | c |}
+    \hline & Lloyd & Elkan \\ \hline
+    Total & 49.44 \% & 49.44 \% \\ \hline
+    Classe 1 & 62.71 \% & 62.71 \% \\ \hline
+    Classe 2 & 64.79 \% & 64.79 \% \\ \hline
+    Classe 3 & 10.42 \% & 10.42 \% \\ \hline
+  \end{tabular}
+\end{table}
 
 \subsection{K-Moyennes seule}
 \subsubsection{Utilisation de toutes les données}
 En utilisant toutes les données fournies par le tableau on applique dirrectement les K-Moyennes avec les algorithmes Elkan et Lloyd.
+\newpage
 
 \begin{figure}[h!] % Placement de l'image
    \centering
@@ -217,7 +201,6 @@ Lorsqu'on applique KMeans avec des attributs choisis par un connaiseur on obtien
    \includegraphics[width=0.6\textwidth]{profetional_atributes.png} % Chemin de l'image
    \caption{Classes des données avec attributs choisis par un connaisseur}
 \end{figure}
-\newpage
 Lorsqu'on regarde le taux de succès global, on a 83.13 \%.\\
 
 On a par groupe on a :
@@ -226,7 +209,7 @@ On a par groupe on a :
 \item Wine-group 2 : 77.77 \%
 \item Wine-group 3 : 85.41 \%
 \end{itemize}
-\newpage
+
 \begin{figure}[h!] % Placement de l'image
    \centering
    \includegraphics[width=0.6\textwidth]{differents_attributes.png} % Chemin de l'image
@@ -243,7 +226,7 @@ On peut aussi en conclure que lorsqu'on applique l'ACP le taux de succès des de
 
 On a essayé aussi de changer le tirage aléatoire avec des valeurs de début, et même de cette manière on obtient le même pourcentage de succès.\\
 
-On remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs\ref{fig:compare}. On comprends donc que choisir trop d'atributs n'est pas toujours la meilleure solution, mais en choisissant moins d'attributs au hasard ce n'est pas mieux.\\
+On remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs \ref{fig:compare}. On comprends donc que choisir trop d'atributs n'est pas toujours la meilleure solution, mais en choisissant moins d'attributs au hasard ce n'est pas mieux.\\
 
 Il faut donc choisir judicieusement les données que l'on veut traiter.\\
 
