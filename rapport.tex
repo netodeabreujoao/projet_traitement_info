@@ -139,7 +139,7 @@ Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{lloyd.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{lloyd.png} % Chemin de l'image
    \caption{Classes des données avec l'algorithme de Lloyd}
    \label{fig:lloyd} % Label pour faire référence à l'image
 \end{figure}
@@ -155,13 +155,13 @@ On a par classe on a :
 
 
 \subsubsection{Algorithme Elkan}
-Lorsqu'on applique KMeans avec l'algorithme de Lloyd, on obtient :
+Lorsqu'on applique KMeans avec l'algorithme de Elkan, on obtient :
 
-\newpage
+
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{elkan.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{elkan.png} % Chemin de l'image
    \caption{Classes des données avec l'algorithme d'Elkan}
    \label{fig:elkan} % Label pour faire référence à l'image
 \end{figure}
@@ -181,7 +181,7 @@ En utilisant toutes les données fournies par le tableau on applique dirrectemen
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{comparaison_algos.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{comparaison_algos.png} % Chemin de l'image
    \caption{Resultats obtenues par les algorithmes lloyd et elkan}
    \label{comparaison_algos.png} % Label pour faire référence à l'image
 \end{figure}
@@ -194,10 +194,10 @@ Lorsqu'on applique KMeans avec des attributs choisis par une personne lambda on 
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{normal_atributes.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{normal_atributes.png} % Chemin de l'image
    \caption{Classes des données avec attributs choisis par personne lambda}
 \end{figure}
-\newpage
+
 
 Lorsqu'on regarde le taux de succès global, on a 67.84 \%.\\
 
@@ -214,10 +214,10 @@ Lorsqu'on applique KMeans avec des attributs choisis par un connaiseur on obtien
 
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{profetional_atributes.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{profetional_atributes.png} % Chemin de l'image
    \caption{Classes des données avec attributs choisis par un connaisseur}
 \end{figure}
-
+\newpage
 Lorsqu'on regarde le taux de succès global, on a 83.13 \%.\\
 
 On a par groupe on a :
@@ -229,8 +229,9 @@ On a par groupe on a :
 \newpage
 \begin{figure}[h!] % Placement de l'image
    \centering
-   \includegraphics[width=0.8\textwidth]{differents_attributes.png} % Chemin de l'image
+   \includegraphics[width=0.6\textwidth]{differents_attributes.png} % Chemin de l'image
    \caption{Comparaison de reussite selon les attributs choisis}
+   \label{fig:compare}
 \end{figure}
 
 \section{Conclusion}
@@ -242,7 +243,7 @@ On peut aussi en conclure que lorsqu'on applique l'ACP le taux de succès des de
 
 On a essayé aussi de changer le tirage aléatoire avec des valeurs de début, et même de cette manière on obtient le même pourcentage de succès.\\
 
-On remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs. On comprends donc que choisir trop d'atributs n'est pas toujours la meilleure solution, mais en choisissant moins d'attributs au hasard ce n'est pas mieux.\\
+On remarque assez facilement que les attributs choisis par les professionnels sont les meilleurs\ref{fig:compare}. On comprends donc que choisir trop d'atributs n'est pas toujours la meilleure solution, mais en choisissant moins d'attributs au hasard ce n'est pas mieux.\\
 
 Il faut donc choisir judicieusement les données que l'on veut traiter.\\
 
