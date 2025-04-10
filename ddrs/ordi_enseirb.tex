@@ -1,30 +1,44 @@
 \section{Utilisation de DELL T1700/3620 à l'école}
 
-Dans cette partie, nous allons calculer le bilan carbone lorsqu'on utilise 6OO ordinateurs DELL T1700/3620 à l'Enseirb-Matmeca durant 5 ans, c'est-à-dire leur cycle de vie.
+Dans cette section, nous évaluons le bilan carbone lié à l'utilisation de 600 ordinateurs DELL T1700/3620 à l'ENSEIRB-MATMECA sur une période de 5 ans, correspondant à leur cycle de vie.
 
-Donc sur openLCA, nous avons mis 600 flows d'ordinateur DELL T1700/3620 que nous avons créer dans la partie précédente et l'éléctricité utilisé pour le fonctionnement des ordinateurs.
+Pour ce faire, nous avons modélisé dans \textit{openLCA} les 600 ordinateurs, en utilisant les \textit{flows} créés précédemment. Nous avons également pris en compte l’électricité consommée pour leur fonctionnement.
 
-Après des recherches sur internet, nous avons trouvé que l'ordinateur consomme 290 Watts. Ce qui donne 8,17 $ \times 10^8$ Wh.
+D'après nos recherches, chaque ordinateur consomme en moyenne 290~W. Sur 5 ans, cela correspond à une consommation énergétique totale de :
 
-On obtient ainsi un bilan carbone de (à verifier ) 1,74 $\times 10^5$ kgCO2 eq.
+\[
+E_{\text{totale}} = 600 \times 290~\text{W} \times 24~\text{h/j} \times 365~\text{j/an} \times 5~\text{ans} = 8{,}17 \times 10^8~\text{Wh}
+\]
 
+Ce qui nous donne, selon les résultats obtenus dans \textit{openLCA}, un bilan carbone estimé à :
 
+\[
+\text{Bilan carbone total} \approx 2{,}22 \times 10^5~\text{kgCO}_2~\text{eq}
+\]
 
-Lors de la phase de fabrication, nous avons l'extraction des matières premières, la fabrication des composants, l'assemblage et le transport. Alors que pendant la phase d'usage, nous avons la consomation énergétique, la maintnance et la mise à niveaux des logicielles.
+\subsection{Analyse des phases du cycle de vie}
 
-Or dans l'étude de DELL ( \citep{dell2018carbon} ), la phase de fabrication est composée des contributions des matériaux, de la fabrication et de la distribution et la phase d'usage est composée de l'utilisation et de la gestion de la fin de vie.
+Le cycle de vie d’un ordinateur se divise principalement en deux grandes phases :
 
+\begin{itemize}
+    \item \textbf{Phase de fabrication} : extraction des matières premières, fabrication des composants, assemblage, et transport.
+    \item \textbf{Phase d’usage} : consommation énergétique, maintenance, et mise à niveau des logiciels.
+\end{itemize}
 
-D'après l'étude de DELL ( \citep{dell2018carbon} ) et de notre bilan de carbonne, le plus impactant dans l'ordinateur est la carte mère et carte graphique.
+Selon l’étude de DELL~\citep{dell2018carbon}, la phase de fabrication comprend les contributions des matériaux, de la fabrication proprement dite, ainsi que de la distribution. La phase d’usage, quant à elle, regroupe l'utilisation ainsi que la gestion de la fin de vie du matériel.
 
+D’après cette étude et notre propre modélisation, les composants les plus impactants en termes d’émissions sont la carte mère et la carte graphique.
 
+\subsection{Bilan carbone par étudiant}
 
-Pour calculer le bilan carbone d'un étudiant pour la partie informatique durant ses 3 années d'études, nous devons faire les calculs suivants:
+Nous cherchons maintenant à estimer l’empreinte carbone associée à l’usage informatique d’un étudiant sur ses trois années de formation à l’ENSEIRB-MATMECA. Pour cela, nous procédons aux calculs suivants :
 
-\begin{equation*}
-    \frac{1,74 \times 10^5 \text{ kgCO2 eq}}{600} = 290 \text{kgCO2 eq par étudiant pendant 5 ans} 
-\end{equation*}
+\[
+\frac{2{,}22 \times 10^5~\text{kgCO}_2~\text{eq}}{600} = 370~\text{kgCO}_2~\text{eq par étudiant pour 5 ans}
+\]
 
-\begin{equation*}
-    \frac{3}{5} \times 290 = 174 \text{ kgCO2 eq sur 3 ans}
-\end{equation*}
+\[
+\frac{3}{5} \times 370 = 222~\text{kgCO}_2~\text{eq sur 3 ans}
+\]
+
+Ainsi, l’impact carbone moyen associé à l’usage informatique d’un étudiant sur l’ensemble de sa scolarité est estimé à 174~kgCO\textsubscript{2}~eq.
