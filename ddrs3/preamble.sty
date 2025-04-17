@@ -1,0 +1,56 @@
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{footnote}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[numbers]{natbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[linesnumbered,ruled,vlined,noend,french,onelanguage]{algorithm2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{subcaption}
+
+\SetKwComment{Comment}{// }{}
+\SetKwProg{Fn}{Fonction}{ :}{}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{math}
+\usetikzlibrary{arrows}
+
+\pagestyle{fancy}
+
+\textheight 26cm      
+\textwidth 16.0cm      
+\oddsidemargin 2.5cm            
+\evensidemargin 2.5cm          
+\addtolength{\oddsidemargin}{-2.5cm}
+\addtolength{\evensidemargin}{-2.5cm}
+\topmargin 0 cm      
+\addtolength{\topmargin}{-2cm}  
+
+\fancyhfoffset[L]{0.1in} % Ajuster la marge gauche de l'en-tête
+\fancyhfoffset[R]{0.1in} % Ajuster la marge droite de l'en-tête
+
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{Année universitaire: 2024-2025}
+\fancyhead[L]{Pedro Henrique Rodriguez Russo - Jo\~ao Pedro Neto de Abreu}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[C]{\thepage} 
+\fancyfoot[L]{ENSEIRB-MATMECA}
+\fancyfoot[R]{TP Analyse du Cycle de Vie }
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
