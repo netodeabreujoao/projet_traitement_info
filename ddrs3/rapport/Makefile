@@ -1,5 +1,5 @@
 all: 
-	pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex && evince main.pdf
+	pdflatex main.tex && pdflatex main.tex && pdflatex main.tex && evince main.pdf
 
 soutenance:
 	pdflatex soutenance.tex && evince soutenance.pdf
